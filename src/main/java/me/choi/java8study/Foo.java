@@ -1,6 +1,6 @@
 package me.choi.java8study;
 
-import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
 /**
  * Project : java8study
@@ -11,7 +11,10 @@ import java.util.function.BiFunction;
  */
 public class Foo {
     public static void main(String[] args) {
-        BiFunction<Integer, Integer, Integer> biFunction = (number1, number2) -> number1 * number2;
-        System.out.println(biFunction.apply(20, 40));;
+        Consumer<Integer> print = (i) -> System.out.println(i);
+        print.accept(10);
+
+        Consumer<Integer> print2 = System.out::println;
+        print.accept(10);
     }
 }
