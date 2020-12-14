@@ -1,6 +1,7 @@
 package me.choi.java8study;
 
 import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
 
 /**
  * Project : java8study
@@ -11,10 +12,7 @@ import java.util.function.Predicate;
  */
 public class Foo {
     public static void main(String[] args) {
-        Predicate<String> startsWithJunwoo = (str) -> str.charAt(0) == 'j';
-        System.out.println(startsWithJunwoo.test("junwoo"));
-        System.out.println(startsWithJunwoo.test("wunwoo"));
-
-        Predicate<Integer> isEven = (i) -> i % 2 == 0;
+        UnaryOperator<Integer> unaryOperator = (i) -> i + 100;
+        System.out.println(unaryOperator.apply(4700));
     }
 }
