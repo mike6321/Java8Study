@@ -1,5 +1,7 @@
 package me.choi.java8study;
 
+import java.util.function.Function;
+
 /**
  * Project : java8study
  *
@@ -9,24 +11,17 @@ package me.choi.java8study;
  */
 public class Foo {
     public static void main(String[] args) {
-        // 익명 내부 클래스 anonymous inner class
-//        RunSomething runSomething = new RunSomething() {
-//            @Override
-//            public void doIt() {
-//                System.out.println("do it");
-//            }
-//        };
-        // 람다로 변경
-//        RunSomething runSomething2 = () -> System.out.println("do it");
-//        runSomething2.doIt();
+        Function<Integer, Integer> plus10 = (number) -> number + 10;
+        Function<Integer, Integer> multiply2 = (number) -> number * 2;
+        System.out.println(plus10.apply(20));
 
-        int baseNumber = 20;
-        RunSomething runSomething = (number) -> {
-            return baseNumber + 10;
-        };
+        // * 2 연산 후 + 10
+        Function<Integer, Integer> mutiply2AndPlus10 = plus10.compose(multiply2);
+        System.out.println(mutiply2AndPlus10.apply(10));
 
-        System.out.println(runSomething.doIt(10));
-        System.out.println(runSomething.doIt(10));
-        System.out.println(runSomething.doIt(10));
+        // + 연산 후 * 2
+        Integer andThen = plus10.andThen(multiply2).apply(10);
+        System.out.println(andThen);
+
     }
 }
