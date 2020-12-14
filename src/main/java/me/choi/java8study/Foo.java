@@ -1,6 +1,6 @@
 package me.choi.java8study;
 
-import java.util.function.Supplier;
+import java.util.function.Predicate;
 
 /**
  * Project : java8study
@@ -11,7 +11,10 @@ import java.util.function.Supplier;
  */
 public class Foo {
     public static void main(String[] args) {
-        Supplier<Integer> get10 = () -> 10;
-        System.out.println(get10.get());
+        Predicate<String> startsWithJunwoo = (str) -> str.charAt(0) == 'j';
+        System.out.println(startsWithJunwoo.test("junwoo"));
+        System.out.println(startsWithJunwoo.test("wunwoo"));
+
+        Predicate<Integer> isEven = (i) -> i % 2 == 0;
     }
 }
