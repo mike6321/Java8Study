@@ -1,6 +1,5 @@
 package me.choi.java8study;
 
-import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
 /**
@@ -14,5 +13,6 @@ public class Foo {
     public static void main(String[] args) {
         UnaryOperator<Integer> unaryOperator = (i) -> i + 100;
         System.out.println(unaryOperator.apply(4700));
+
     }
 }
