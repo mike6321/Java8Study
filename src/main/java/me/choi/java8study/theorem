@@ -1,0 +1,30 @@
+함수형 인터페이스란?
+- 다른 형태의 메서드가 있어도 추상메서드가 하나만 존재하면 functional Interface 이다.
+@FunctionalInterface : 선언 방법
+
+람다는 특수한 형태의 오브젝트
+함수형인터페이스를 인라인으로 구현한 오브젝트
+
+1. 변수할당, 메서드 파라미터 전달, 리턴타입 리턴 가능 -> First Class Object로 사용가능
+2. 순수함수
+side effect를 만들 수 없다. (함수 밖에 있는 값 변경 불가)
+3. 고차함수
+함수가 함수를 매개변수로 받을 수 있고 리턴이 가능하다.
+4. 불변성 보장
+
+
+아래 코드는 무조건 20이 나와야한다. 모든 코드에 이것을 보장 받지 못하면 함수형 프로그래밍이라고 할 수 없다.
+RunSomething runSomething = (number) -> {
+    return number + 10;
+};
+
+System.out.println(runSomething.doIt(10));
+System.out.println(runSomething.doIt(10));
+System.out.println(runSomething.doIt(10));
+
+
+
+
+
+
+
