@@ -1,6 +1,7 @@
 package me.choi.java8study.stream;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Project : java8study
@@ -36,6 +37,17 @@ public class App {
             System.out.println(lowCaloricDish.getCalories());
         }
         for (String name : lowCaloricDishesNames) {
+            System.out.println(name);
+        }
+
+
+        List<String> streamLowCaloricDishesNames = Dish.menu.stream()
+                                                            .filter(d -> d.getCalories() < 400)
+                                                            .sorted(Comparator.comparing(Dish::getCalories))
+                                                            .map(Dish::getName)
+                                                            .collect(Collectors.toList());
+
+        for (String name : streamLowCaloricDishesNames) {
             System.out.println(name);
         }
     }
