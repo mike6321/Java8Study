@@ -50,5 +50,49 @@ public class App {
         for (String name : streamLowCaloricDishesNames) {
             System.out.println(name);
         }
+
+
+        List<Dish> vegetarianMenu = Dish.menu.stream()
+                                        .filter(dish -> {
+                                            System.out.println("filtering " + dish.isVegitarian());
+                                            return dish.isVegitarian();
+                                        })
+                                        .collect(Collectors.toList());
+
+        // TODO: 고유요소 필터링 2021/03/09 9:07 오후
+        List<Integer> numbers = Arrays.asList(1, 2, 1, 3, 3, 2, 4);
+        numbers.stream()
+               .filter(i -> i % 2 == 0)
+               .distinct()
+               .forEach(System.out::println);
+
+        // TODO: 스트림 축소 2021/03/09 9:07 오후
+        List<Dish> dishes = Dish.menu.stream()
+                                     .filter(d -> d.getCalories() > 0)
+                                     .limit(3)
+                                     .sorted(Comparator.comparingInt(Dish::getCalories))
+                                     .collect(Collectors.toList());
+
+
+        dishes.forEach(d -> {
+            System.out.println(d.getName());
+        });
+
+        // TODO: 스트림 요소 건너뛰기 2021/03/09 9:09 오후
+        List<Dish> dishList = Dish.menu.stream().filter(d -> d.getCalories() > 300)
+                                                .skip(2)
+                                                .collect(Collectors.toList());
+
+        dishes.forEach(d -> {
+            System.out.println(d.getName());
+        });
+
+        // TODO: 처음 등장하는 고기요리 필터링 2021/03/09 9:12 오후
+        System.out.println("처음 등장하는 고기요리 필터링");
+        Dish.menu.stream().filter(d -> d.getType().equals(Type.MEAT))
+                          .limit(2)
+                          .forEach(f -> System.out.println(f.getName()));
+
+
     }
 }
