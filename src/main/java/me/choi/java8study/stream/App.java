@@ -94,5 +94,84 @@ public class App {
                           .forEach(f -> System.out.println(f.getName()));
 
 
+        List<String> mapName = Dish.menu.stream()
+                                    .map(Dish::getName)
+                                    .collect(Collectors.toList());
+
+
+        List<String> words = Arrays.asList("Java8", "Lamdas", "In", "Action");
+        List<Integer> wordLengths = words.stream()
+                                        .map(String::length)
+                                        .collect(Collectors.toList());
+        System.out.println(wordLengths);
+
+        // TODO: 요리명의 길이 알아내기 with map 2021/03/09 9:30 오후
+        List<Integer> dishNameLengths = Dish.menu.stream()
+                                                .map(Dish::getName)
+                                                .map(String::length)
+                                                .collect(Collectors.toList());
+
+        System.out.println(dishNameLengths);
+
+        // TODO: 고유의 문자열 구하기 flatMap 2021/03/09 9:37 오후
+        List<String> word2 = Arrays.asList("Hello", "World");
+        List<String[]> mapWorld = word2.stream()
+                                        .map(w -> w.split(""))
+                                        .distinct()
+                                        .collect(Collectors.toList());
+        System.out.println(mapWorld);
+
+        word2.stream()
+                .map(w -> w.split(""))
+                .map(Arrays::stream)
+                .collect(Collectors.toList());
+
+        List<String> flatMapWords = word2.stream()
+                                        .map(w -> w.split(""))
+                                        .flatMap(Arrays::stream)
+                                        .distinct()
+                                        .collect(Collectors.toList());
+
+        System.out.println(flatMapWords);
+
+        // TODO: map으로 제곱근 구하기 2021/03/09 9:39 오후
+        List<Integer> numberList = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> productNumber = numberList.stream()
+                                                .map(n -> n * n)
+                                                .collect(Collectors.toList());
+
+        System.out.println(productNumber);
+
+        // TODO: 숫자 쌍 구하기 2021/03/09 10:28 오후
+        List<Integer> number1 = Arrays.asList(1, 2, 3);
+        List<Integer> number2 = Arrays.asList(3, 4);
+
+        List<int[]> pairs = number1.stream()
+                                    .flatMap(i -> number2.stream()
+                                            .map(j -> new int[]{i, j}))
+                                    .collect(Collectors.toList());
+        pairs.stream()
+                .forEach(pair -> Arrays.stream(pair)
+                                        .forEach(System.out::print));
+
+        pairs.stream()
+                .map(pair -> {
+                            Arrays.stream(pair)
+                                    .forEach(System.out::println);
+                            return null;
+                        }
+                )
+                .forEach(dummy -> {});
+
+        // TODO: 조건이 있는 숫자 쌍 구하기 2021/03/09 10:28 오후
+        List<int[]> pairs2 = number1.stream()
+                                    .flatMap(i -> number2.stream().filter(j -> (i + j) % 3 == 0)
+                                            .map(j -> new int[]{i, j}))
+                                    .collect(Collectors.toList());
+
+        pairs2.stream()
+                .forEach(p -> Arrays.stream(p)
+                                    .forEach(System.out::print));
+
     }
 }
