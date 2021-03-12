@@ -19,5 +19,11 @@ public class StreamExample02 {
         for (Integer number : numbers) {
             sum += number;
         }
+
+        // TODO: reduce 사용 2021/03/12 5:50 오후
+        Integer reduceSum = numbers.stream().reduce(0, (a, b) -> a + b);
+        Integer reduceProduct = numbers.stream().reduce(1, (a, b) -> a * b);
+        System.out.println(reduceProduct);
+
     }
 }
