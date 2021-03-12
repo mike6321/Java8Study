@@ -33,8 +33,10 @@ public class StreamExample02 {
         // TODO: 최대값 구하기 non reduce 2021/03/12 5:56 오후
         Optional<Integer> max = numbers.stream().max((a, b) -> a.compareTo(b));
         System.out.println(max.get());
-        
-        
+
+        // TODO: 최대값 구하기 reduce 2021/03/12 5:56 오후
+        Optional<Integer> reduceMax = numbers.stream().reduce(Integer::max);
+
 
     }
 }
