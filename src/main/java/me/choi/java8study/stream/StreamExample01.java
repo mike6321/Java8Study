@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
  * @comment :
  * Time : 4:30 오후
  */
-public class App {
+public class StreamExample01 {
     public static void main(String[] args) {
         // TODO: 400 칼로리 미만의 Dish list에 담기 2021/03/09 4:34 오후
         // TODO: 400 칼로리 미만의 Dish list에 담고 이름 저장 2021/03/09 4:36 오후
@@ -172,6 +172,19 @@ public class App {
         pairs2.stream()
                 .forEach(p -> Arrays.stream(p)
                                     .forEach(System.out::print));
+        System.out.println();
+
+        // TODO: anyMatch 2021/03/09 10:44 오후
+        if (Dish.menu.stream().anyMatch(d -> d.getType() == Type.FISH)) {
+            System.out.println("There are contains Fish Type");
+        }
+
+        // TODO: allMatch 2021/03/09 10:44 오후
+        boolean result1 = Dish.menu.stream().allMatch(d -> d.getCalories() >= 0);
+        System.out.println(result1);
+
+        boolean result2 = Dish.menu.stream().noneMatch(d -> d.getCalories() < 0);
+        System.out.println(result2);
 
     }
 }
