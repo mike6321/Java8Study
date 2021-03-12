@@ -2,6 +2,7 @@ package me.choi.java8study.stream;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Project : java8study
@@ -24,6 +25,10 @@ public class StreamExample02 {
         Integer reduceSum = numbers.stream().reduce(0, (a, b) -> a + b);
         Integer reduceProduct = numbers.stream().reduce(1, (a, b) -> a * b);
         System.out.println(reduceProduct);
+
+        // TODO: 초기값이 없는 reducd 사용 2021/03/12 5:54 오후
+        Optional<Integer> notInitReduceSum = numbers.stream().reduce((a, b) -> a + b);
+        System.out.println(notInitReduceSum);
 
     }
 }
