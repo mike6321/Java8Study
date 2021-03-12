@@ -29,6 +29,12 @@ public class StreamExample02 {
         // TODO: 초기값이 없는 reducd 사용 2021/03/12 5:54 오후
         Optional<Integer> notInitReduceSum = numbers.stream().reduce((a, b) -> a + b);
         System.out.println(notInitReduceSum);
+        
+        // TODO: 최대값 구하기 non reduce 2021/03/12 5:56 오후
+        Optional<Integer> max = numbers.stream().max((a, b) -> a.compareTo(b));
+        System.out.println(max.get());
+        
+        
 
     }
 }
