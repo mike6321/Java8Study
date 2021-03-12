@@ -37,6 +37,11 @@ public class StreamExample02 {
         // TODO: 최대값 구하기 reduce 2021/03/12 5:56 오후
         Optional<Integer> reduceMax = numbers.stream().reduce(Integer::max);
 
+        // TODO: reduce count 하기 2021/03/12 6:00 오후
+        long count = Dish.menu.stream().count();
+        System.out.println(count);
+        Integer countReduce = Dish.menu.stream().map(d -> 1).reduce(0, (a, b) -> a + b);
+        System.out.println(countReduce);
 
     }
 }
