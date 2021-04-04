@@ -3,6 +3,8 @@ package me.choi.java8study.why;
 import java.util.Arrays;
 import java.util.List;
 
+import static java.util.stream.Collectors.joining;
+
 /**
  * Project : java8study
  *
@@ -31,5 +33,10 @@ public class WhyJava8 {
         }
 
         System.out.println(stringBuilder);
+
+        final String result = numbers.stream()
+                                      .map(String::valueOf)
+                                      .collect(joining(" : "));
+        System.out.println(result);
     }
 }
