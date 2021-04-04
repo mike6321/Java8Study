@@ -23,6 +23,6 @@ public class ConsumerExample {
         Consumer<String> printLamda = (value) -> System.out.println(value);
         printLamda.accept("Hello");
 
-        Function<String, Void> printLamdaWithFunction = (value) -> System.out.println(value);
+//        Function<String, Void> printLamdaWithFunction = (value) -> System.out.println(value);
     }
 }
