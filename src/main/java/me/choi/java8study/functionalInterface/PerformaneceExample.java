@@ -2,6 +2,7 @@ package me.choi.java8study.functionalInterface;
 
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 /**
  * Project : java8study
@@ -15,31 +16,31 @@ public class PerformaneceExample {
         PerformaneceExample example = new PerformaneceExample();
 
         long start = System.currentTimeMillis();
-        example.method();
-        example.method();
-        example.method();
+        example.method1();
+        example.method1();
+        example.method1();
         System.out.println(System.currentTimeMillis() - start);
 
         start = System.currentTimeMillis();
-        example.method(() -> example.timeConsumingTask());
-        example.method(() -> example.timeConsumingTask());
-        example.method(() -> example.timeConsumingTask());
+        example.method2();
+        example.method2();
+        example.method2();
         System.out.println(System.currentTimeMillis() - start);
     }
 
-    public void method() {
+    public void method1() {
         timeConsumingTask();
     }
 
-    public void method(Runnable runnable) {
-
+    public Runnable method2() {
+        return () -> timeConsumingTask();
     }
 
     public void timeConsumingTask() {
         try {
             TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         }
     }
 }
