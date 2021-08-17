@@ -22,9 +22,9 @@ public class PerformaneceExample {
         System.out.println(System.currentTimeMillis() - start);
 
         start = System.currentTimeMillis();
-        example.method2();
-        example.method2();
-        example.method2();
+        example.method2().run();
+        example.method2().run();
+        example.method2().run();
         System.out.println(System.currentTimeMillis() - start);
     }
 
